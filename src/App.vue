@@ -1,14 +1,36 @@
 <template>
   <div id="app">
-    <Card/>
+    <CardList :cards="cards"/>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import Card from "./modules/models/card";
+
 export default {
   name: "app",
+  data() {
+    return {
+      cards: [], //new Array(6).fill({}, 0, 6),
+      api:
+        "https://my-json-server.typicode.com/bigriceeater/food-restaurant-data/restaurants"
+    };
+  },
   components: {
-    Card: require("@/components/card-item").default
+    CardList: require("@/components/card-list").default
+  },
+  created() {
+    axios.get(this.api).then(res => {
+      res.data.forEach(restaurant => {
+        const card = new Card({
+          title: restaurant.title,
+          imageUrl: restaurant.imageUrl,
+          description: restaurant.description
+        });
+        this.cards.push(card);
+      });
+    });
   }
 };
 </script>
