@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1 class="title">Recommended</h1>
     <CardList :cards="cards"/>
   </div>
 </template>

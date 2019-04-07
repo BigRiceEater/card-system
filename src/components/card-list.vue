@@ -1,8 +1,6 @@
 <template>
   <div class="card-list">
-    <div class="inner">
-      <Card v-for="(card,index) in cards" :card="card" :key="index"/>
-    </div>
+    <Card v-for="(card,index) in cards" :card="card" :key="index"/>
   </div>
 </template>
 
@@ -19,14 +17,9 @@ export default {
 
 <style scoped>
 .card-list {
-  padding: 25px;
-  margin: 5px;
-}
-.inner {
   display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
-  overflow: auto;
+  overflow-x: auto;
 }
 </style>
 

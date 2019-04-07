@@ -1,18 +1,14 @@
 <template>
   <div class="card">
-    <div class="card-header">
-      <p class="card-header-title is-centered">{{ cardTitle }}</p>
-    </div>
-
+    <header class="card-header">
+      <p class="card-title card-header-title is-centered is-quarter">{{ cardTitle }}</p>
+    </header>
     <div class="card-image">
-      <figure class="image is-4by3">
+      <figure class="image is-5by3">
         <img :src="cardImageUrl" alt="card image">
       </figure>
     </div>
-
-    <div class="card-content">
-      <p>{{ cardDescription }}</p>
-    </div>
+    <div class="card-content">{{ cardDescription }}</div>
   </div>
 </template>
 
@@ -49,28 +45,35 @@ export default {
 </script>
 
 <style scoped>
+.card-title {
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
 .card {
   width: 200px;
-  margin: 5px;
+  height: 300px;
+  margin: 15px;
+  flex: 0 0 auto;
+  overflow-y: hidden;
 }
+
 .card-content {
-  min-height: 125px;
-  max-height: 125px;
-  overflow: hidden;
+  height: 110px;
+  overflow-y: hidden;
 }
-
-img {
-  object-fit: cover;
-}
-
-/* Fade the bottom text if too much
-.card-content:before {
+.card-content:after {
   content: "";
-  width: 100%;
-  height: 100%;
   position: absolute;
+  z-index: 1;
+  bottom: 0;
   left: 0;
-  top: 0;
-  background: linear-gradient(transparent 50px, black);
-} */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1) 90%
+  );
+  width: 100%;
+  height: 4em;
+}
 </style>
