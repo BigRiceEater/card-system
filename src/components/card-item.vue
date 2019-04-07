@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{'card-last' : isLastCard}">
     <header class="card-header">
       <p class="card-title card-header-title is-centered is-quarter">{{ cardTitle }}</p>
     </header>
@@ -18,7 +18,8 @@ import { pathOr } from "ramda";
 
 export default {
   props: {
-    card: Object
+    card: Object,
+    isLastCard: Boolean
   },
   methods: {
     getValueFromCard(initValue, path) {
@@ -56,6 +57,10 @@ export default {
   margin: 15px;
   flex: 0 0 auto;
   overflow-y: hidden;
+}
+
+.card-last {
+  margin-right: 40px;
 }
 
 .card-content {

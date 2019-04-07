@@ -1,6 +1,14 @@
 <template>
   <div class="card-list">
-    <Card v-for="(card,index) in cards" :card="card" :key="index"/>
+    <div class="inner-wrapper">
+      <span class="more-arrow">></span>
+      <Card
+        v-for="(card,index) in cards"
+        :card="card"
+        :key="index"
+        :isLastCard="index === cards.length-1"
+      />
+    </div>
   </div>
 </template>
 
@@ -16,10 +24,20 @@ export default {
 </script>
 
 <style scoped>
+.more-arrow {
+  font-size: 3em;
+  margin: 20px;
+}
+
 .card-list {
-  display: flex;
-  flex-wrap: nowrap;
   overflow-x: auto;
+  padding: 30px;
+}
+
+.inner-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 </style>
 
