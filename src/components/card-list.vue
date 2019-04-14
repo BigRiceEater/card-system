@@ -34,6 +34,7 @@ export default {
 /* Just for scrolling */
 .card-list {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 30px;
 }
 
